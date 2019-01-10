@@ -147,7 +147,7 @@ GET:
         jsr CHKIN
         jsr rshavedata
         beq GET_NO_DATA
-        jsr BASIN
+        jsr OURBASIN
         ldx #$00
         sta (ptr1,x)
         jsr CLRCH 
@@ -158,6 +158,19 @@ GET:
 GET_NO_DATA:
         lda #<SER_ERR_NO_DATA
         ldx #>SER_ERR_NO_DATA 
+        rts
+
+;----------------------------------------------------------------------------
+; OURBASIN: This is a minimised call to get the character from the buffer.
+; The Kernal code does not allow zero bytes (0x00)... this does.
+;
+ 
+OURBASIN:
+        jsr $F14E
+        bcc @exit
+        jmp $F1B4
+@exit
+        clc
         rts
 
 ;----------------------------------------------------------------------------
@@ -185,6 +198,7 @@ STATUS:
         lda     #<SER_ERR_OK
         tax
         rts
+
 ;----------------------------------------------------------------------------
 ; IOCTL: Driver defined entry point. The wrapper will pass a pointer to ioctl
 ; specific data in ptr1, and the ioctl code in A.
