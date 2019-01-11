@@ -5,9 +5,9 @@ NAME = example
 PROGRAM = $(NAME).prg
 DISK = $(NAME).d64
 C64_IP = 192.168.1.64
-C1541 = ~/Developer/Tools/Vice/tools/c1541
+C1541 = c1541
 
-CC      = $(CC65_HOME)/bin/cl65
+CC      = cl65
 CFLAGS  = -t $(CC65_TARGET) -O -g -I../..
 LDFLAGS = -t $(CC65_TARGET) -m $(PROGRAM).map -Ln $(PROGRAM).lbl -I../..
 VENDOR  = ../vendor

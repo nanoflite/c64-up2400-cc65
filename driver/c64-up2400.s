@@ -169,7 +169,7 @@ OURBASIN:
         jsr $F14E
         bcc @exit
         jmp $F1B4
-@exit
+@exit:
         clc
         rts
 

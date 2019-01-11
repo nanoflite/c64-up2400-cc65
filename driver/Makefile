@@ -3,7 +3,7 @@ ASOURCES = c64-up2400.s
 CC65_TARGET = c64
 PROGRAM = c64-up2400.ser
 
-CC      = $(CC65_HOME)/bin/cl65
+CC      = cl65
 CFLAGS  = -t $(CC65_TARGET) -O
 LDFLAGS = -t $(CC65_TARGET) --module
 
